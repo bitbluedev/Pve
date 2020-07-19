@@ -12,6 +12,7 @@ namespace Pve.Handlers
         public override void Execute()
         {
             World.Exit = true;
+            Console.Clear();
             Console.WriteLine("Farewell.");
             Console.WriteLine("Press any key to exit...");
             Console.ReadKey();
