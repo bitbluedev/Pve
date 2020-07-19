@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Game.cs" />
     <Compile Include="Handlers\ExitHandler.cs" />
+    <Compile Include="Handlers\MainHandler.cs" />
     <Compile Include="Handlers\StateHandlerBase.cs" />
     <Compile Include="Handlers\NewGameHandler.cs" />
     <Compile Include="Program.cs" />
