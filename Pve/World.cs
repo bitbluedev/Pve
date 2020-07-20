@@ -1,4 +1,5 @@
-﻿using Pve.Handlers;
+﻿using Pve.GameEntity;
+using Pve.Handlers;
 
 namespace Pve
 {
@@ -18,6 +19,7 @@ namespace Pve
 
         public static StateHandlerBase CurrentState { get; set; }
         public static bool Exit { get; set; }
+        public static Player Player { get; set; }
 
         #region handlers
         public static AdventureHandler AdventureHandlerInstance { get; set; }

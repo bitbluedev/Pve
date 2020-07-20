@@ -44,6 +44,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Game.cs" />
+    <Compile Include="GameEntity\Enemy.cs" />
+    <Compile Include="GameEntity\EnemyBear.cs" />
+    <Compile Include="GameEntity\EnemyDog.cs" />
+    <Compile Include="GameEntity\Player.cs" />
     <Compile Include="Handlers\AdventureHandler.cs" />
     <Compile Include="Handlers\CombatHandler.cs" />
     <Compile Include="Handlers\ExitHandler.cs" />

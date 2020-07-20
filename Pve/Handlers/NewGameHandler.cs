@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pve.GameEntity;
+using System;
 
 namespace Pve.Handlers
 {
@@ -12,6 +13,7 @@ namespace Pve.Handlers
         public override void Execute()
         {
             World.Exit = false;
+            World.Player = new Player();
 
             bool done;
             do

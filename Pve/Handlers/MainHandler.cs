@@ -10,6 +10,8 @@ namespace Pve.Handlers
             do
             {
                 Console.Clear();
+                Console.WriteLine(World.Player);
+                Console.WriteLine();
                 Console.WriteLine("What would you like to do?");
                 Console.WriteLine("1. " + World.RestHandlerInstance.Description);
                 Console.WriteLine("2. " + World.AdventureHandlerInstance.Description);
