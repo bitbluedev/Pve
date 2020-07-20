@@ -20,6 +20,7 @@ namespace Pve
         public static StateHandlerBase CurrentState { get; set; }
         public static bool Exit { get; set; }
         public static Player Player { get; set; }
+        public static Enemy Enemy { get; internal set; }
 
         #region handlers
         public static AdventureHandler AdventureHandlerInstance { get; set; }

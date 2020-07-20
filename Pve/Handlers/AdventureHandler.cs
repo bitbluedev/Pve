@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pve.GameEntity;
+using System;
 
 namespace Pve.Handlers
 {
@@ -12,10 +13,11 @@ namespace Pve.Handlers
         public override void Execute()
         {
             bool combat = true;
+            World.Enemy = CreateRandomEnemy();
             if (combat)
             {
                 Console.Clear();
-                Console.WriteLine("You have encountered an enemy.");
+                Console.WriteLine("You have encountered a hostile " + World.Enemy.Name);
                 Console.WriteLine("Press any key to begin combat...");
                 Console.ReadKey();
                 World.CurrentState = World.CombatHandlerInstance;
@@ -24,6 +26,11 @@ namespace Pve.Handlers
             {
                 World.CurrentState = World.WorldEventHandlerInstance;
             }
+        }
+
+        private Enemy CreateRandomEnemy()
+        {
+            return new EnemyDog();
         }
     }
 }

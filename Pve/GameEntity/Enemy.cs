@@ -2,15 +2,22 @@
 {
     internal abstract class Enemy
     {
-        public Enemy(int attack, int defense, int health)
+        public int Attack { get; set; }
+        public int Defense { get; set; }
+        public int Health { get; set; }
+        public string Name { get; set; }
+
+        public Enemy(string name, int attack, int defense, int health)
         {
+            Name = name;
             Attack = attack;
             Defense = defense;
             Health = health;
         }
 
-        public int Attack { get; set; }
-        public int Defense { get; set; }
-        public int Health { get; set; }
+        public override string ToString()
+        {
+            return Name + " [ATTACK: " + Attack + " DEFENSE: " + Defense + " HEALTH: " + Health + "]";
+        }
     }
 }
