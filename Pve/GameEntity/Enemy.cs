@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Pve.GameEntity
+﻿namespace Pve.GameEntity
 {
-    abstract class Enemy
+    internal abstract class Enemy
     {
         public Enemy(int attack, int defense, int health)
         {

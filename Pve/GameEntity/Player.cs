@@ -11,7 +11,7 @@
         {
             Attack = 10;
             Defense = 10;
-            Health = 30;
+            Health = 25;
             MaxHealth = 30;
         }
 
