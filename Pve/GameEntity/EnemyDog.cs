@@ -2,7 +2,7 @@
 {
     internal class EnemyDog : Enemy
     {
-        public EnemyDog() : base("Dog", 7, 3, 10)
+        public EnemyDog() : base("Dog", 1, 7, 3, 10)
         {
         }
     }

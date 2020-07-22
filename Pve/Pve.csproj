@@ -47,6 +47,7 @@
     <Compile Include="GameEntity\Enemy.cs" />
     <Compile Include="GameEntity\EnemyBear.cs" />
     <Compile Include="GameEntity\EnemyDog.cs" />
+    <Compile Include="GameEntity\EnemyGiant.cs" />
     <Compile Include="GameEntity\Player.cs" />
     <Compile Include="Handlers\AdventureHandler.cs" />
     <Compile Include="Handlers\CombatHandler.cs" />

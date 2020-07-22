@@ -6,6 +6,7 @@
         public int Defense { get; set; }
         public int Health { get; set; }
         public int MaxHealth { get; set; }
+        public int Level { get; set; }
 
         public Player()
         {
@@ -13,6 +14,7 @@
             Defense = 10;
             Health = 25;
             MaxHealth = 30;
+            Level = 1;
         }
 
         public override string ToString()

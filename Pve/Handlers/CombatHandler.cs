@@ -5,7 +5,8 @@ namespace Pve.Handlers
 {
     internal class CombatHandler : StateHandlerBase
     {
-        Random random = new Random();
+        private readonly Random random = new Random();
+
         public override void Execute()
         {
             Console.Clear();
@@ -46,8 +47,8 @@ namespace Pve.Handlers
 
         private void DoCombatTurn()
         {
-            int playerAttackRoll = Dice.RollMultipleDice(2) + Dice.RollCrit(1, 100);
-            int enemyAttackRoll = Dice.RollMultipleDice(2) + Dice.RollCrit(85, 100);
+            int playerAttackRoll = Dice.RollMultipleDice(2) + Dice.RollCrit(World.Player.Level, 100);
+            int enemyAttackRoll = Dice.RollMultipleDice(2) + Dice.RollCrit(World.Enemy.Level, 100);
             int playerAttack = World.Player.Attack + playerAttackRoll;
             int enemyAttack = World.Enemy.Attack + enemyAttackRoll;
 

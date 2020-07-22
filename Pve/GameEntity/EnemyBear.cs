@@ -2,7 +2,7 @@
 {
     internal class EnemyBear : Enemy
     {
-        public EnemyBear() : base("Bear", 10, 7, 20)
+        public EnemyBear() : base("Bear", 2, 10, 7, 20)
         {
         }
     }
