@@ -1,5 +1,7 @@
-﻿using Pve.Util;
+﻿using Pve.GameEntity;
+using Pve.Util;
 using System;
+using System.Collections.Generic;
 
 namespace Pve.Handlers
 {
@@ -24,25 +26,28 @@ namespace Pve.Handlers
             if (victory)
             {
                 Console.WriteLine("You have won.");
-                DoLoot();
+                List<Item> loot = LootGenerator.GenerateLootItems(World.Enemy.Level);
+                World.Player.Inventory.AddRange(loot);
+                if (loot.Count > 0)
+                {
+                    string s = loot.Count > 1 ? "s" : "";
+                    Console.WriteLine("You have found " + loot.Count + " item" + s + " after the battle.");
+                    for (int i = 0; i < loot.Count; i++)
+                    {
+                        Console.WriteLine("* " + loot[i].Name);
+                    }
+                }
                 Console.WriteLine("Press any key to continue...");
                 Console.ReadKey();
                 World.CurrentState = World.MainHandlerInstance;
             }
             else
             {
-                Console.Clear();
                 Console.WriteLine("You have lost. Your adventure ends here.");
                 Console.WriteLine("Press any key to continue...");
                 Console.ReadKey();
                 World.CurrentState = World.NewGameHandlerInstance;
             }
-        }
-
-        private void DoLoot()
-        {
-            // TODO : implementation
-            return;
         }
 
         private void DoCombatTurn()

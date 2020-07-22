@@ -44,11 +44,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Game.cs" />
+    <Compile Include="GameEntity\Armor.cs" />
     <Compile Include="GameEntity\Enemy.cs" />
     <Compile Include="GameEntity\EnemyBear.cs" />
     <Compile Include="GameEntity\EnemyDog.cs" />
     <Compile Include="GameEntity\EnemyGiant.cs" />
+    <Compile Include="GameEntity\Item.cs" />
     <Compile Include="GameEntity\Player.cs" />
+    <Compile Include="GameEntity\Weapon.cs" />
     <Compile Include="Handlers\AdventureHandler.cs" />
     <Compile Include="Handlers\CombatHandler.cs" />
     <Compile Include="Handlers\ExitHandler.cs" />
@@ -61,6 +64,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\Dice.cs" />
+    <Compile Include="Util\LootGenerator.cs" />
     <Compile Include="World.cs" />
   </ItemGroup>
   <ItemGroup>

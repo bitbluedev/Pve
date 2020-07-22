@@ -6,9 +6,10 @@ namespace Pve.Handlers
     {
         public override void Execute()
         {
-            bool done = true;
+            bool done;
             do
             {
+                done = true;
                 Console.Clear();
                 Console.WriteLine(World.Player);
                 Console.WriteLine();

@@ -31,16 +31,12 @@ namespace Pve.Handlers
 
         private Enemy CreateRandomEnemy()
         {
-            /* 36-35 Giant  2/31
-             * 34-27 Bear   8/31
-             * 26-6  Dog   21/31
-             * */
             int roll = Dice.RollMultipleDice(6);
-            if (roll >= 35)
+            if (roll >= 28)
             {
                 return new EnemyGiant();
             }
-            else if (roll >= 27)
+            else if (roll >= 23)
             {
                 return new EnemyBear();
             }
