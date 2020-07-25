@@ -50,7 +50,7 @@ namespace Pve.Handlers
 
         private void DoCombatTurn()
         {
-            int playerAttackRoll = Dice.RollMultipleDice(2) + Dice.RollCrit(World.Player.Level, 100);
+            int playerAttackRoll = Dice.RollMultipleDice(2) + Dice.RollCrit(World.Player.CriticalHitChancePercent, 100);
             int enemyAttackRoll = Dice.RollMultipleDice(2) + Dice.RollCrit(World.Enemy.Level, 100);
             int playerAttack = World.Player.Attack + playerAttackRoll;
             int enemyAttack = World.Enemy.Attack + enemyAttackRoll;
@@ -59,15 +59,19 @@ namespace Pve.Handlers
             Console.WriteLine("Enemy Attack Power:  " + World.Enemy.Attack + "+" + enemyAttackRoll + " -> " + enemyAttack);
             if (playerAttack > enemyAttack)
             {
-                int damage = Math.Max(0, World.Player.Attack - World.Enemy.Defense) + Dice.RollCrit(20, 5);
-                World.Enemy.Health -= damage;
-                Console.WriteLine("Player attacks " + World.Enemy.Name + ". " + World.Enemy.Name + " takes " + damage + " damage.");
+                int damage = Math.Max(0, World.Player.Attack - World.Enemy.Defense);
+                int crit = Dice.RollCrit(20, 5);
+                World.Enemy.Health -= (damage + crit);
+                string critMessage = crit > 0 ? "+" + crit : "";
+                Console.WriteLine("Player attacks " + World.Enemy.Name + ". " + World.Enemy.Name + " takes " + damage + critMessage + " damage.");
             }
             else
             {
-                int damage = Math.Max(0, World.Enemy.Attack - World.Player.Defense) + Dice.RollCrit(20, 5);
-                World.Player.Health -= damage;
-                Console.WriteLine(World.Enemy.Name + " attacks Player. Player takes " + damage + " damage.");
+                int damage = Math.Max(0, World.Enemy.Attack - World.Player.Defense);
+                int crit = Dice.RollCrit(20, 5);
+                World.Player.Health -= (damage + crit);
+                string critMessage = crit > 0 ? "+" + crit : "";
+                Console.WriteLine(World.Enemy.Name + " attacks Player. Player takes " + damage + critMessage + " damage.");
             }
         }
     }

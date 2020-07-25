@@ -5,28 +5,80 @@ namespace Pve.GameEntity
 {
     internal class Player
     {
-        public int Attack { get; set; }
-        public int Defense { get; set; }
+        private Weapon weapon;
+        private Armor armor;
+        public int BaseAttack { get; set; }
+        public int BaseDefense { get; set; }
+        public int BaseCriticalHitChancePercent { get; set; }
         public int Health { get; set; }
+        public int BaseMaxHealth { get; set; }
         public int MaxHealth { get; set; }
         public int Level { get; set; }
-        public Weapon Weapon { get; set; }
-        public Armor Armor { get; set; }
+        public int Attack { get; set; }
+        public int Defense { get; set; }
+        public int CriticalHitChancePercent { get; set; }
+
+        public Weapon Weapon
+        {
+            get
+            {
+                return weapon;
+            }
+
+            set
+            {
+                Attack = BaseAttack;
+                CriticalHitChancePercent = BaseCriticalHitChancePercent;
+                if (value != null)
+                {
+                    Attack += value.BaseDamage + value.ExtraDamage;
+                    CriticalHitChancePercent += value.CriticalHitChance;
+                }
+                weapon = value;
+            }
+        }
+        public Armor Armor {
+            get
+            {
+                return armor;
+            }
+
+            set
+            {
+                Defense = BaseDefense;
+                MaxHealth = BaseMaxHealth;
+                if (value != null)
+                {
+                    Defense += value.BaseDefense + value.ExtraDefense;
+                    MaxHealth += value.Health;
+                    if (Health > MaxHealth)
+                    {
+                        Health = MaxHealth;
+                    }
+                }
+                armor = value;
+            }
+        }
         public List<Item> Inventory { get; set; }
 
         public Player()
         {
-            Attack = 10;
-            Defense = 10;
-            Health = 25;
-            MaxHealth = 30;
+            Attack = BaseAttack = 10;
+            Defense = BaseDefense = 10;
+            Health = MaxHealth = BaseMaxHealth = 30;
+            CriticalHitChancePercent = BaseCriticalHitChancePercent = 5;
             Level = 1;
             Inventory = new List<Item>();
         }
 
         public override string ToString()
         {
-            return "Player [ATTACK: " + Attack + " DEFENSE: " + Defense + " HEALTH: " + Health + "/" + MaxHealth + "]";
+            return "Player [" +
+                "ATTACK: " + Attack + 
+                " DEFENSE: " + Defense + 
+                " HEALTH: " + Health + "/" + MaxHealth + 
+                " CRITICAL HIT CHANCE: " + CriticalHitChancePercent + "%" + 
+                "]";
         }
     }
 }
