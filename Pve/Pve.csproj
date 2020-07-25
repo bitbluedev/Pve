@@ -44,19 +44,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Game.cs" />
-    <Compile Include="GameEntity\Armor.cs" />
-    <Compile Include="GameEntity\ChainMailArmor.cs" />
+    <Compile Include="GameEntity\Equipment\Armor.cs" />
+    <Compile Include="GameEntity\Equipment\ChainMailArmor.cs" />
     <Compile Include="GameEntity\Enemy.cs" />
     <Compile Include="GameEntity\EnemyBear.cs" />
     <Compile Include="GameEntity\EnemyDog.cs" />
     <Compile Include="GameEntity\EnemyGiant.cs" />
-    <Compile Include="GameEntity\HandAxe.cs" />
-    <Compile Include="GameEntity\Item.cs" />
-    <Compile Include="GameEntity\LeatherArmor.cs" />
+    <Compile Include="GameEntity\Equipment\HandAxe.cs" />
+    <Compile Include="GameEntity\Equipment\Item.cs" />
+    <Compile Include="GameEntity\Equipment\LeatherArmor.cs" />
     <Compile Include="GameEntity\Player.cs" />
     <Compile Include="GameEntity\Sword.cs" />
-    <Compile Include="GameEntity\TwoHandedSword.cs" />
-    <Compile Include="GameEntity\Weapon.cs" />
+    <Compile Include="GameEntity\Equipment\TwoHandedSword.cs" />
+    <Compile Include="GameEntity\Equipment\Weapon.cs" />
     <Compile Include="Handlers\AdventureHandler.cs" />
     <Compile Include="Handlers\CombatHandler.cs" />
     <Compile Include="Handlers\ExitHandler.cs" />

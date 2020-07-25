@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Pve.GameEntity.Equipment;
+using System.Collections.Generic;
 
 namespace Pve.GameEntity
 {

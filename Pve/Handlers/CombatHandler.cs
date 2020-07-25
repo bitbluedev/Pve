@@ -1,4 +1,4 @@
-﻿using Pve.GameEntity;
+﻿using Pve.GameEntity.Equipment;
 using Pve.Util;
 using System;
 using System.Collections.Generic;

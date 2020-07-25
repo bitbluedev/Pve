@@ -1,4 +1,4 @@
-﻿namespace Pve.GameEntity
+﻿namespace Pve.GameEntity.Equipment
 {
     internal class WeaponTwoHandedSword : Weapon
     {

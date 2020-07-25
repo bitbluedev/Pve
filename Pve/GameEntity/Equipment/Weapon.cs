@@ -1,4 +1,6 @@
-﻿namespace Pve.GameEntity
+﻿using Pve.GameEntity.Equipment;
+
+namespace Pve.GameEntity
 {
     internal class Weapon : Item
     {

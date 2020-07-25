@@ -1,4 +1,5 @@
 ﻿using Pve.GameEntity;
+using Pve.GameEntity.Equipment;
 using System;
 using System.Collections.Generic;
 
