@@ -19,9 +19,14 @@ namespace Pve.Handlers
                 done = true;
 
                 Console.Clear();
+                
+                PrintEquippedItems();
+
                 Console.WriteLine("What would you like to do?");
-                Console.WriteLine("1. Equip Item.");
-                Console.WriteLine("2. Unequip Item.");
+                string noUnequippedNotification = (World.Player.Inventory.Count == 0 ? " (There are no items to equip) " : "");
+                Console.WriteLine("1. Equip Item." + noUnequippedNotification);
+                string noEquippedNotification = (World.Player.Weapon == null && World.Player.Armor == null ? " (There are no items to unequip) " : "");
+                Console.WriteLine("2. Unequip Item." + noEquippedNotification);
                 Console.WriteLine("3. Continue Adventure.");
                 Console.WriteLine("4. " + World.ExitHandlerInstance.Description);
                 Console.Write(": ");
@@ -30,7 +35,8 @@ namespace Pve.Handlers
                 {
                     if (World.Player.Inventory.Count == 0)
                     {
-                        Console.WriteLine("No items to equip.");
+                        Console.Clear();
+                        Console.WriteLine("There are no items to equip.");
                         Console.WriteLine("Press any key to continue...");
                         Console.ReadKey();
                     }
@@ -41,9 +47,17 @@ namespace Pve.Handlers
                 }
                 else if (result == "2")
                 {
-                    Console.WriteLine("No items to unequip.");
-                    Console.WriteLine("Press any key to continue...");
-                    Console.ReadKey();
+                    if (World.Player.Weapon == null && World.Player.Armor == null)
+                    {
+                        Console.Clear();
+                        Console.WriteLine("There are no items to unequip.");
+                        Console.WriteLine("Press any key to continue...");
+                        Console.ReadKey();
+                    }
+                    else
+                    {
+                        UnequipItem();
+                    }
                 }
                 else if (result == "3")
                 {
@@ -60,6 +74,64 @@ namespace Pve.Handlers
             } while (!done);
         }
 
+        private void UnequipItem()
+        {
+            bool done;
+            do
+            {
+                done = true;
+
+                Console.Clear();
+
+                PrintEquippedItems();
+                Console.WriteLine("What would you like to do?");
+
+                int index = 1;
+                if (World.Player.Weapon != null)
+                {
+                    Console.WriteLine(index + ". Unequip Weapon: " + World.Player.Weapon);
+                    index++;
+                }
+                if (World.Player.Armor != null)
+                {
+                    Console.WriteLine(index + ". Unequip Armor: " + World.Player.Armor);
+                    index++;
+                }
+                Console.WriteLine(index + ". Back to " + Description);
+                Console.Write(": ");
+
+                string choice = Console.ReadLine();
+                if (choice == "1")
+                {
+                    if (World.Player.Weapon != null)
+                    {
+                        World.Player.Inventory.Add(World.Player.Weapon);
+                        World.Player.Weapon = null;
+                    }
+                    else
+                    {
+                        World.Player.Inventory.Add(World.Player.Armor);
+                        World.Player.Armor = null;
+                    }
+                }
+                else if (choice == "2")
+                {
+                    if (World.Player.Weapon != null && World.Player.Armor != null)
+                    {
+                        World.Player.Inventory.Add(World.Player.Armor);
+                        World.Player.Armor = null;
+                    }
+                }
+                else
+                {
+                    if (World.Player.Weapon == null || World.Player.Armor == null || choice != "3")
+                    {
+                        done = false;
+                    }
+                }
+            } while (!done);
+        }
+
         private void EquipItem()
         {
             bool done;
@@ -68,30 +140,12 @@ namespace Pve.Handlers
                 done = true;
 
                 Console.Clear();
-                Console.WriteLine("Equipment: ");
-                if (World.Player.Weapon == null)
-                {
-                    Console.WriteLine("Weapon: NONE");
-                }
-                else
-                {
-                    Console.WriteLine("Weapon: " + World.Player.Weapon);
-                }
 
-                if (World.Player.Armor == null)
-                {
-                    Console.WriteLine("Armor: NONE");
-                }
-                else
-                {
-                    Console.WriteLine("Armor: " + World.Player.Armor);
-                }
-                Console.WriteLine();
-
+                PrintEquippedItems();
                 Console.WriteLine("What would you like to do?");
                 for (int i = 0; i < World.Player.Inventory.Count; i++)
                 {
-                    Console.WriteLine((i + 1) + ". Equip" + World.Player.Inventory[i]);
+                    Console.WriteLine((i + 1) + ". Equip " + World.Player.Inventory[i]);
                 }
                 Console.WriteLine((World.Player.Inventory.Count + 1) + ". Back to " + Description);
                 Console.Write(": ");
@@ -131,6 +185,30 @@ namespace Pve.Handlers
                     done = false;
                 }
             } while (!done);
+        }
+
+        private void PrintEquippedItems()
+        {
+            Console.WriteLine("Equipment: ");
+            if (World.Player.Weapon == null)
+            {
+                Console.WriteLine("Weapon: NONE");
+            }
+            else
+            {
+                Console.WriteLine("Weapon: " + World.Player.Weapon);
+            }
+
+            if (World.Player.Armor == null)
+            {
+                Console.WriteLine("Armor: NONE");
+            }
+            else
+            {
+                Console.WriteLine("Armor: " + World.Player.Armor);
+            }
+            Console.WriteLine();
+
         }
     }
 }
