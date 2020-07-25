@@ -86,52 +86,49 @@ namespace Pve.Handlers
                 {
                     Console.WriteLine("Armor: " + World.Player.Armor);
                 }
+                Console.WriteLine();
 
-                Console.WriteLine("Inventory:");
+                Console.WriteLine("What would you like to do?");
                 for (int i = 0; i < World.Player.Inventory.Count; i++)
                 {
-                    Console.WriteLine((i + 1) + ". " + World.Player.Inventory[i]);
+                    Console.WriteLine((i + 1) + ". Equip" + World.Player.Inventory[i]);
                 }
-                Console.WriteLine("0. Back to " + Description);
-                Console.WriteLine("Which item would you like to equip?");
+                Console.WriteLine((World.Player.Inventory.Count + 1) + ". Back to " + Description);
                 Console.Write(": ");
 
                 string result = Console.ReadLine();
-                if (result != "0")
+                if (int.TryParse(result, out int choice))
                 {
-                    if (int.TryParse(result, out int choice))
+                    if (choice > 0 && choice <= World.Player.Inventory.Count)
                     {
-                        if (choice >= 0 && choice <= World.Player.Inventory.Count)
+                        int index = choice - 1;
+                        Item item = World.Player.Inventory[index];
+                        World.Player.Inventory.RemoveAt(index);
+                        if (item is Weapon)
                         {
-                            int index = choice - 1;
-                            Item item = World.Player.Inventory[index];
-                            World.Player.Inventory.RemoveAt(index);
-                            if (item is Weapon)
+                            if (World.Player.Weapon != null)
                             {
-                                if (World.Player.Weapon != null)
-                                {
-                                    World.Player.Inventory.Add(World.Player.Weapon);
-                                }
-                                World.Player.Weapon = item as Weapon;
+                                World.Player.Inventory.Add(World.Player.Weapon);
                             }
-                            else
-                            {
-                                if (World.Player.Armor != null)
-                                {
-                                    World.Player.Inventory.Add(World.Player.Armor);
-                                }
-                                World.Player.Armor = item as Armor;
-                            }
+                            World.Player.Weapon = item as Weapon;
                         }
                         else
                         {
-                            done = false;
+                            if (World.Player.Armor != null)
+                            {
+                                World.Player.Inventory.Add(World.Player.Armor);
+                            }
+                            World.Player.Armor = item as Armor;
                         }
                     }
-                    else
+                    else if (choice != World.Player.Inventory.Count + 1)
                     {
                         done = false;
                     }
+                }
+                else
+                {
+                    done = false;
                 }
             } while (!done);
         }
