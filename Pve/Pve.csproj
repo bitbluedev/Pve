@@ -54,7 +54,7 @@
     <Compile Include="GameEntity\Equipment\Item.cs" />
     <Compile Include="GameEntity\Equipment\LeatherArmor.cs" />
     <Compile Include="GameEntity\Player.cs" />
-    <Compile Include="GameEntity\Sword.cs" />
+    <Compile Include="GameEntity\Equipment\Sword.cs" />
     <Compile Include="GameEntity\Equipment\TwoHandedSword.cs" />
     <Compile Include="GameEntity\Equipment\Weapon.cs" />
     <Compile Include="Handlers\AdventureHandler.cs" />
