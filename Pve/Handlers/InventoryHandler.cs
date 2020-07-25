@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Pve.GameEntity;
+using Pve.GameEntity.Equipment;
+using System;
+using System.ComponentModel;
 
 namespace Pve.Handlers
 {
@@ -25,9 +28,16 @@ namespace Pve.Handlers
                 string result = Console.ReadLine();
                 if (result == "1")
                 {
-                    Console.WriteLine("No items to equip.");
-                    Console.WriteLine("Press any key to continue...");
-                    Console.ReadKey();
+                    if (World.Player.Inventory.Count == 0)
+                    {
+                        Console.WriteLine("No items to equip.");
+                        Console.WriteLine("Press any key to continue...");
+                        Console.ReadKey();
+                    }
+                    else
+                    {
+                        EquipItem();
+                    }
                 }
                 else if (result == "2")
                 {
@@ -46,6 +56,82 @@ namespace Pve.Handlers
                 else
                 {
                     done = false;
+                }
+            } while (!done);
+        }
+
+        private void EquipItem()
+        {
+            bool done;
+            do
+            {
+                done = true;
+
+                Console.Clear();
+                Console.WriteLine("Equipment: ");
+                if (World.Player.Weapon == null)
+                {
+                    Console.WriteLine("Weapon: NONE");
+                }
+                else
+                {
+                    Console.WriteLine("Weapon: " + World.Player.Weapon);
+                }
+
+                if (World.Player.Armor == null)
+                {
+                    Console.WriteLine("Armor: NONE");
+                }
+                else
+                {
+                    Console.WriteLine("Armor: " + World.Player.Armor);
+                }
+
+                Console.WriteLine("Inventory:");
+                for (int i = 0; i < World.Player.Inventory.Count; i++)
+                {
+                    Console.WriteLine((i + 1) + ". " + World.Player.Inventory[i]);
+                }
+                Console.WriteLine("0. Back to " + Description);
+                Console.WriteLine("Which item would you like to equip?");
+                Console.Write(": ");
+
+                string result = Console.ReadLine();
+                if (result != "0")
+                {
+                    if (int.TryParse(result, out int choice))
+                    {
+                        if (choice >= 0 && choice <= World.Player.Inventory.Count)
+                        {
+                            int index = choice - 1;
+                            Item item = World.Player.Inventory[index];
+                            World.Player.Inventory.RemoveAt(index);
+                            if (item is Weapon)
+                            {
+                                if (World.Player.Weapon != null)
+                                {
+                                    World.Player.Inventory.Add(World.Player.Weapon);
+                                }
+                                World.Player.Weapon = item as Weapon;
+                            }
+                            else
+                            {
+                                if (World.Player.Armor != null)
+                                {
+                                    World.Player.Inventory.Add(World.Player.Armor);
+                                }
+                                World.Player.Armor = item as Armor;
+                            }
+                        }
+                        else
+                        {
+                            done = false;
+                        }
+                    }
+                    else
+                    {
+                        done = false;
+                    }
                 }
             } while (!done);
         }

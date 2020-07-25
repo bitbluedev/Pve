@@ -10,8 +10,8 @@ namespace Pve.GameEntity
         public int Health { get; set; }
         public int MaxHealth { get; set; }
         public int Level { get; set; }
-        public int Weapon { get; set; }
-        public int Armor { get; set; }
+        public Weapon Weapon { get; set; }
+        public Armor Armor { get; set; }
         public List<Item> Inventory { get; set; }
 
         public Player()
