@@ -1,4 +1,4 @@
-﻿using Pve.GameEntity;
+﻿using Pve.GameEntity.Enemy;
 using Pve.Util;
 using System;
 

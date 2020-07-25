@@ -1,4 +1,4 @@
-﻿namespace Pve.GameEntity
+﻿namespace Pve.GameEntity.Enemy
 {
     internal abstract class Enemy
     {

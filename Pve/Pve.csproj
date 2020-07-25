@@ -46,10 +46,10 @@
     <Compile Include="Game.cs" />
     <Compile Include="GameEntity\Equipment\Armor.cs" />
     <Compile Include="GameEntity\Equipment\ChainMailArmor.cs" />
-    <Compile Include="GameEntity\Enemy.cs" />
-    <Compile Include="GameEntity\EnemyBear.cs" />
-    <Compile Include="GameEntity\EnemyDog.cs" />
-    <Compile Include="GameEntity\EnemyGiant.cs" />
+    <Compile Include="GameEntity\Enemy\Enemy.cs" />
+    <Compile Include="GameEntity\Enemy\EnemyBear.cs" />
+    <Compile Include="GameEntity\Enemy\EnemyDog.cs" />
+    <Compile Include="GameEntity\Enemy\EnemyGiant.cs" />
     <Compile Include="GameEntity\Equipment\HandAxe.cs" />
     <Compile Include="GameEntity\Equipment\Item.cs" />
     <Compile Include="GameEntity\Equipment\LeatherArmor.cs" />
