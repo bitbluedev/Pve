@@ -1,15 +1,9 @@
 ﻿namespace Pve.GameEntity
 {
-    class Armor : Item
+    internal class Armor : Item
     {
-        public Armor() : base("Commoner Suit")
-        {
-
-        }
-
-        public Armor(string name) : base(name)
-        {
-
-        }
+        public int BaseDefense { get; set; }
+        public int ExtraDefense { get; set; }
+        public int Health { get; set; }
     }
 }

@@ -1,15 +1,9 @@
 ﻿namespace Pve.GameEntity
 {
-    class Weapon : Item
+    internal class Weapon : Item
     {
-        public Weapon() : base("Hand Axe")
-        {
-
-        }
-
-        public Weapon(string name) : base(name)
-        {
-
-        }
+        public int BaseDamage { get; set; }
+        public int ExtraDamage { get; set; }
+        public int CriticalHitChance { get; set; }
     }
 }

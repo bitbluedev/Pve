@@ -7,8 +7,6 @@ namespace Pve.Handlers
 {
     internal class CombatHandler : StateHandlerBase
     {
-        private readonly Random random = new Random();
-
         public override void Execute()
         {
             Console.Clear();
