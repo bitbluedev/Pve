@@ -12,10 +12,10 @@ namespace Pve.Handlers
         public override void Execute()
         {
             string playerDescription = World.Player.ToString();
-            bool shouldHeal = World.Player.Health < World.Player.BaseMaxHealth;
+            bool shouldHeal = World.Player.Health < World.Player.MaxHealth;
             if (shouldHeal)
             {
-                World.Player.Health = World.Player.BaseMaxHealth;
+                World.Player.Health = World.Player.MaxHealth;
                 playerDescription += " -> " + World.Player.ToString();
             }
             Console.Clear();
