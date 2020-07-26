@@ -32,7 +32,7 @@ namespace Pve.Handlers
                     Console.WriteLine("You have found " + loot.Count + " item" + s + " after the battle.");
                     for (int i = 0; i < loot.Count; i++)
                     {
-                        Console.WriteLine("* " + loot[i].Name);
+                        Console.WriteLine("* " + loot[i]);
                     }
                 }
                 Console.WriteLine("Press any key to continue...");

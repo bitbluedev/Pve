@@ -13,10 +13,10 @@ namespace Pve.Handlers
 
         public override void Execute()
         {
-            bool combat = true;
-            World.Enemy = CreateRandomEnemy();
+            bool combat = Dice.Roll() > 2;
             if (combat)
             {
+                World.Enemy = CreateRandomEnemy();
                 Console.Clear();
                 Console.WriteLine("You have encountered a hostile " + World.Enemy.Name);
                 Console.WriteLine("Press any key to begin combat...");

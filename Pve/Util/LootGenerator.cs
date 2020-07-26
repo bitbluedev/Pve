@@ -24,7 +24,7 @@ namespace Pve.Util
             return loot;
         }
 
-        private static Item GenerateItem()
+        public static Item GenerateItem()
         {
             if (Dice.Roll() > 3)
             {
