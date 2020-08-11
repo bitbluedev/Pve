@@ -6,7 +6,7 @@ namespace Pve
     {
         public static void Run()
         {
-            World.CurrentState = new NewGameHandler();
+            World.CurrentState = World.NewGameHandlerInstance;
             do
             {
                 World.CurrentState.Execute();
