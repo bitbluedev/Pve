@@ -14,8 +14,8 @@ namespace Pve.Handlers
             while (World.Player.Health >= 0 && World.Enemy.Health >= 0)
             {
                 Console.WriteLine("Turn #" + turn++);
-                Console.WriteLine(World.Player.ToString());
-                Console.WriteLine("Enemy: " + World.Enemy.ToString());
+                Console.WriteLine(World.Player);
+                Console.WriteLine("Enemy: " + World.Enemy);
                 DoCombatTurn();
             }
 

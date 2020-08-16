@@ -16,7 +16,7 @@ namespace Pve.Handlers
             if (shouldHeal)
             {
                 World.Player.Health = World.Player.MaxHealth;
-                playerDescription += " -> " + World.Player.ToString();
+                playerDescription += " -> " + World.Player;
             }
             Console.Clear();
             Console.WriteLine(playerDescription);
